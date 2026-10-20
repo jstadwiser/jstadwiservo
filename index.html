@@ -52,12 +52,12 @@
     .ticker-band { position: relative; z-index: 1; padding: 1.5rem 3rem 2rem; max-width: calc(var(--content-max) + 6rem); margin: 0 auto; }
     .ticker-band .heard-on-label { text-align: left; display: block; }
     .ticker-wrap { overflow: hidden; padding-left: 0; background: var(--terra-pale); border-radius: 12px; padding: 0.9rem 0; border: 0.5px solid rgba(184,92,56,0.15); max-width: var(--content-max); margin: 0 auto; }
-    .ticker-track { display: flex; width: max-content; animation: ticker 22s linear infinite; }
+    .ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }
     .ticker-track:hover { animation-play-state: paused; }
     .ticker-item { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: var(--terra-dark); padding: 0 1.5rem; white-space: nowrap; }
     .ticker-dot { color: var(--terra-light); padding: 0 0.1rem; display: flex; align-items: center; }
     .ticker-track { align-items: center; }
-    .ticker-item { display: flex; align-items: center; height: 32px; }
+    .ticker-item { display: flex; align-items: center; height: 44px; padding: 0 1.75rem; }
     .ticker-logo img { display: block; width: auto; }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
@@ -224,37 +224,37 @@
   <div class="ticker-wrap">
     <div class="ticker-track">
       <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/cbs.png" alt="CBS" style="height:30px" /></span>
-      <span class="ticker-dot">·</span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
       <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/fox.png" alt="FOX" style="height:24px" /></span>
-      <span class="ticker-dot">·</span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
       <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/nbc.png" alt="NBC" style="height:26px" /></span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Jimmy Kimmel Live</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">DIY Network</span>
-      <span class="ticker-dot">·</span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/kimmel.png" alt="Jimmy Kimmel Live" style="height:42px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/diy.png" alt="DIY Network" style="height:34px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
       <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/tlc.png" alt="TLC" style="height:24px" /></span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Extra</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Scripps Sports Network</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/cbs.png" alt="" data-alt="CBS" style="height:30px" /></span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/fox.png" alt="" data-alt="FOX" style="height:24px" /></span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/nbc.png" alt="" data-alt="NBC" style="height:26px" /></span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Jimmy Kimmel Live</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">DIY Network</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/tlc.png" alt="" data-alt="TLC" style="height:24px" /></span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Extra</span>
-      <span class="ticker-dot">·</span>
-      <span class="ticker-item">Scripps Sports Network</span>
-      <span class="ticker-dot">·</span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/extra.png" alt="Extra" style="height:24px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/scripps.png" alt="Scripps Sports" style="height:30px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/cbs.png" alt="" style="height:30px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/fox.png" alt="" style="height:24px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/nbc.png" alt="" style="height:26px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/kimmel.png" alt="" style="height:42px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/diy.png" alt="" style="height:34px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/tlc.png" alt="" style="height:24px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/extra.png" alt="" style="height:24px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
+      <span class="ticker-item ticker-logo" aria-hidden="true"><img onerror="this.classList.add('img-missing')" src="logos/scripps.png" alt="" style="height:30px" /></span>
+      <span class="ticker-dot" aria-hidden="true">·</span>
     </div>
   </div>
 </div>
