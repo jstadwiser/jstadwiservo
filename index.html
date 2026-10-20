@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joanna Stadwiser — Voice Over</title>
+  <meta name="description" content="Joanna Stadwiser, voice over artist for TV promos, commercials, trailers, narration and radio imaging. San Diego home studio, represented by Atlas Talent." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f9f4ee;
+      --cream-dark: #f0e8dd;
+      --terra: #b85c38;
+      --terra-light: #d4795a;
+      --terra-pale: #f2e0d6;
+      --terra-dark: #8a3e22;
+      --sand: #e8ddd2;
+      --text-primary: #2a1f18;
+      --text-secondary: #6b5448;
+      --text-muted: #a08070;
+      --border: rgba(90,55,35,0.12);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Inter', sans-serif;
+      --content-max: 1200px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--text-primary); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(249,244,238,0.94); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 3rem; }
+    .nav-logo { display: flex; align-items: center; overflow: visible; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 15px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--terra); }
+
+    /* HERO */
+    .hero-wrap { background-image: url('hero.jpg'); background-size: cover; background-position: center; position: relative; }
+    .hero-wrap::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.50); pointer-events: none; }
+    .hero { position: relative; z-index: 1; padding: 6rem 3rem 3rem; max-width: calc(var(--content-max) + 6rem); margin: 0 auto; display: flex; flex-direction: column; align-items: flex-start; }
+    .hero-eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin-bottom: 1.25rem; }
+    .hero-headline { font-family: var(--font-display); font-size: 58px; font-weight: 400; line-height: 1.0; color: #ffffff; margin-bottom: 1.75rem; }
+    .hero-headline em { font-style: italic; color: #ffffff; font-weight: 500; }
+    .hero-body { font-size: 15px; color: var(--text-secondary); line-height: 1.8; max-width: 420px; margin-bottom: 2.25rem; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--cream); background: var(--terra); text-decoration: none; padding: 0.7rem 1.5rem; border-radius: 4px; letter-spacing: 0.03em; }
+    .hero-right { display: flex; align-items: center; justify-content: center; }
+    .hero-photo { width: 100%; max-width: 380px; aspect-ratio: 3/4; background: var(--sand); border-radius: 16px; overflow: hidden; border: 0.5px solid var(--border); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .heard-on-label { font-size: 26px; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; margin-bottom: 0.75rem; font-weight: 300; }
+    .ticker-band { position: relative; z-index: 1; padding: 1.5rem 3rem 2rem; max-width: calc(var(--content-max) + 6rem); margin: 0 auto; }
+    .ticker-band .heard-on-label { text-align: left; display: block; }
+    .ticker-wrap { overflow: hidden; padding-left: 0; background: var(--terra-pale); border-radius: 12px; padding: 0.9rem 0; border: 0.5px solid rgba(184,92,56,0.15); max-width: var(--content-max); margin: 0 auto; }
+    .ticker-track { display: flex; width: max-content; animation: ticker 22s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: var(--terra-dark); padding: 0 1.5rem; white-space: nowrap; }
+    .ticker-dot { color: var(--terra-light); padding: 0 0.1rem; display: flex; align-items: center; }
+    .ticker-track { align-items: center; }
+    .ticker-item { display: flex; align-items: center; height: 32px; }
+    .ticker-logo img { display: block; width: auto; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* DIVIDER */
+    .section-divider { max-width: calc(var(--content-max) + 6rem); margin: 0 auto; padding: 0 3rem; }
+    .section-divider hr { border: none; border-top: 0.5px solid var(--border); }
+    .section-wrap { max-width: calc(var(--content-max) + 6rem); margin: 0 auto; padding: 4rem 3rem; }
+    .section-eyebrow { font-size: 32px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.75rem; font-weight: 500; }
+    .section-title { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--text-primary); margin-bottom: 2.5rem; line-height: 1; }
+    .hero-right-label { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin-bottom: 1rem; font-weight: 500; }
+
+    /* DEMO TABS */
+    .demo-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+    .demo-tab { font-size: 15px; color: var(--text-secondary); background: transparent; border: 0.5px solid var(--border); border-radius: 20px; padding: 8px 20px; font-family: var(--font-body); cursor: default; }
+    .demo-tab.active { background: var(--terra); color: var(--cream); border-color: var(--terra); }
+
+    /* FEATURED PLAYER */
+    .featured-player { background: #fff; border: 0.5px solid var(--border); border-radius: 12px; padding: 1.75rem 2rem; margin-bottom: 2rem; }
+    .fp-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .fp-name { font-family: var(--font-display); font-size: 26px; color: var(--text-primary); margin-bottom: 1.5rem; }
+    .fp-row { display: flex; align-items: center; gap: 16px; }
+    .fp-play { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--terra); background: transparent; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .fp-play svg { width: 16px; height: 16px; fill: var(--terra); margin-left: 3px; }
+    .fp-wave { flex: 1; min-width: 0; height: 36px; display: flex; align-items: center; gap: 2px; cursor: pointer; }
+    .fp-bar { border-radius: 2px; flex: 1 1 0; min-width: 1px; max-width: 3px; }
+    .fp-bar.played { background: var(--terra); }
+    .fp-bar.unplayed { background: var(--sand); }
+    .fp-time { font-size: 13px; color: var(--text-muted); flex-shrink: 0; min-width: 40px; text-align: right; }
+
+    /* DEMO LIST */
+    .demo-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .demo-item { border: 0.5px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 12px; background: #fff; }
+    .demo-item.active { border-color: var(--terra); background: var(--terra-pale); }
+    .demo-item-play { width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--terra); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .demo-item-play svg { width: 10px; height: 10px; fill: var(--terra); margin-left: 2px; }
+    .demo-item-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+    .demo-item-cat { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+
+    /* VIDEO GRID */
+    .video-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .video-grid .video-card { width: calc((100% - 48px) / 4); }
+    .video-card { border-radius: 10px; overflow: hidden; border: 0.5px solid var(--border); background: #000; }
+    .video-thumb { position: relative; aspect-ratio: 16/9; background: #1a1210; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.85; }
+    .video-thumb .thumb-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, #2a1f18 0%, #4a2e20 100%); display: flex; align-items: center; justify-content: center; }
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .play-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; }
+    .play-circle svg { width: 18px; height: 18px; fill: var(--terra); margin-left: 3px; }
+    .video-label { padding: 0.85rem 1rem; background: #fff; text-align: center; }
+    .video-label-title { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+
+    .img-missing { visibility: hidden; }
+    .video-thumb { background: linear-gradient(135deg, #2a1f18 0%, #4a2e20 100%); }
+    .about-photo { background: linear-gradient(160deg, var(--sand) 0%, var(--terra-pale) 100%); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 260px 1fr; gap: 4rem; align-items: start; }
+    .about-photo { width: 100%; aspect-ratio: 3/4; background: var(--sand); border-radius: 12px; overflow: hidden; border: 0.5px solid var(--border); }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-content p { font-size: 17px; color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.1rem; }
+    .equipment { margin-top: 2.5rem; padding-top: 2rem; border-top: 0.5px solid var(--border); }
+    .equip-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra); margin-bottom: 1rem; }
+    .equip-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .equip-tag { font-size: 12px; color: var(--text-secondary); border: 0.5px solid var(--border); border-radius: 20px; padding: 5px 12px; background: var(--cream-dark); }
+
+    /* CONTACT */
+    .contact-band { background: var(--text-primary); padding: 5rem 3rem; }
+    .contact-inner { max-width: var(--content-max); margin: 0 auto; }
+    .contact-eyebrow { font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--terra-light); margin-bottom: 0.75rem; font-weight: 500; }
+    .contact-title { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--cream); margin-bottom: 3rem; line-height: 1; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; border-top: 0.5px solid rgba(255,255,255,0.12); padding-top: 2.5rem; }
+    .contact-block h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terra-light); margin-bottom: 1rem; }
+    .contact-block p { font-size: 14px; color: rgba(249,244,238,0.7); line-height: 1.9; }
+    .contact-block a { color: var(--cream); text-decoration: none; border-bottom: 0.5px solid rgba(249,244,238,0.2); }
+
+    footer { background: var(--text-primary); border-top: 0.5px solid rgba(255,255,255,0.08); padding: 1.5rem 3rem; display: flex; justify-content: space-between; }
+    footer p { font-size: 12px; color: rgba(249,244,238,0.35); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--text-primary); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(249,244,238,0.98); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 28px; font-family: var(--font-display); font-weight: 400; color: var(--text-primary); text-decoration: none; letter-spacing: 0.02em; }
+    .mobile-menu a:hover { color: var(--terra); }
+
+    @media (max-width: 1024px) {
+      .video-grid .video-card { width: calc((100% - 16px) / 2); }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; z-index: 101; position: relative; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+      .hero-headline { font-size: 42px; }
+      .ticker-band { padding: 1rem 1.5rem 1.5rem; }
+      .heard-on-label { font-size: 16px; }
+      .ticker-logo img { transform: scale(0.85); }
+      .section-wrap { padding: 3rem 1.5rem; }
+      .section-divider { padding: 0 1.5rem; }
+      .section-eyebrow { font-size: 22px; }
+      .demo-tabs { gap: 5px; flex-wrap: wrap; }
+      .demo-tab { font-size: 11px; padding: 5px 9px; }
+      .featured-player { padding: 1rem; }
+      .fp-name { font-size: 16px; margin-bottom: 1rem; }
+      .fp-wave { gap: 1px; }
+      .big-play-btn { width: 34px; height: 34px; flex-shrink: 0; }
+      .big-play-btn svg { width: 12px; height: 12px; }
+      .big-waveform { height: 24px; }
+      .big-waveform-bar { width: 2px; }
+      .video-grid .video-card { width: 100%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { max-width: 220px; margin: 0 auto; aspect-ratio: 3/4; }
+      .contact-band { padding: 3rem 1.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .nav-logo svg { width: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="340" height="44" viewBox="0 0 460 64" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="46" font-family="Cormorant Garamond, serif" font-size="38" font-weight="300" fill="#2a1f18" letter-spacing="1">Joanna Stadwiser</text>
+      <circle cx="318" cy="32" r="28" fill="#b85c38"/>
+      <circle cx="318" cy="32" r="25" fill="none" stroke="#f2e0d6" stroke-width="0.8"/>
+      <text x="318" y="40" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="24" font-weight="500" fill="#f9f4ee" letter-spacing="1">VO</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#demos">Demos</a></li>
+    <li><a href="#featured">Featured Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#demos" class="mobile-link">Demos</a>
+  <a href="#featured" class="mobile-link">Featured Work</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero-wrap">
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="hero-headline">Voice Over <em>Artist</em></h1>
+  </div>
+  <div class="hero-right">
+  </div>
+</section>
+<div class="ticker-band">
+  <p class="heard-on-label">As heard on</p>
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/cbs.png" alt="CBS" style="height:30px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/fox.png" alt="FOX" style="height:24px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/nbc.png" alt="NBC" style="height:26px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Jimmy Kimmel Live</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">DIY Network</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/tlc.png" alt="TLC" style="height:24px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Extra</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Scripps Sports Network</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/cbs.png" alt="" data-alt="CBS" style="height:30px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/fox.png" alt="" data-alt="FOX" style="height:24px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/nbc.png" alt="" data-alt="NBC" style="height:26px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Jimmy Kimmel Live</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">DIY Network</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item ticker-logo"><img onerror="this.classList.add('img-missing')" src="logos/tlc.png" alt="" data-alt="TLC" style="height:24px" /></span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Extra</span>
+      <span class="ticker-dot">·</span>
+      <span class="ticker-item">Scripps Sports Network</span>
+      <span class="ticker-dot">·</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /hero-wrap -->
+
+<div class="section-divider"><hr></div>
+
+<!-- DEMOS -->
+<section class="section-wrap" id="demos">
+  <p class="section-eyebrow">Listen</p>
+  <h2 class="section-title">Demos</h2>
+
+  <div class="demo-tabs" id="demo-tabs">
+    <div class="demo-tab active">Commercial</div>
+    <div class="demo-tab">Promo</div>
+    <div class="demo-tab">Trailer</div>
+    <div class="demo-tab">Affiliates</div>
+    <div class="demo-tab">Radio Imaging</div>
+  </div>
+
+  <div class="featured-player">
+    <p class="fp-label">Now playing</p>
+    <p class="fp-name" id="fp-name">Commercial Demo</p>
+    <div class="fp-row">
+      <div class="fp-play" id="fp-play">
+        <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l10 6-10 6V1z"/></svg>
+      </div>
+      <div class="fp-wave" id="fp-wave"></div>
+      <span class="fp-time" id="fp-duration">0:00</span>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- FEATURED WORK -->
+<section class="section-wrap" id="featured">
+  <p class="section-eyebrow">Watch</p>
+  <h2 class="section-title">Featured Work</h2>
+  <div class="video-grid">
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="faithful-thumb.jpg" alt="The Faithful on Fox" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">The Faithful on Fox</p></div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="scripps-thumb.jpg" alt="Scripps Sports Network" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">Scripps Sports Network</p></div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="https://img.youtube.com/vi/d1VmPHRyGiE/mqdefault.jpg" alt="Armorvue Windows and Doors" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">Armorvue Windows and Doors</p></div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="https://img.youtube.com/vi/ZmIbWjsfQGE/mqdefault.jpg" alt="Neffy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">Neffy</p></div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="cbs-thumb.jpg" alt="CBS Mornings" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">CBS Mornings</p></div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="concert-thumb.jpg" alt="Concert Promotion" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">Concert Promotion</p></div>
+    </div>
+
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <img onerror="this.classList.add('img-missing')" src="itendswithus-thumb.jpg" alt="It Ends With Us Trailer" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
+      </div>
+      <div class="video-label"><p class="video-label-title">It Ends With Us Trailer</p></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<!-- ABOUT -->
+<section class="section-wrap" id="about">
+  <p class="section-eyebrow">Background</p>
+  <h2 class="section-title">About Joanna</h2>
+  <div class="about-grid">
+    <div class="about-photo">
+      <img onerror="this.classList.add('img-missing')" src="https://joannastadwiser.com/wp-content/uploads/2016/05/joanna-stadwiser.jpg" alt="Joanna Stadwiser" />
+    </div>
+    <div class="about-content">
+      <p>Joanna can be heard on radio stations throughout the US and Canada, as well as on promos for television, commercials, and narration. She has voiced promos for The Today Show, NBC Nightly News, CBS, and Extra.</p>
+      <p>Her radio imaging clientele ranges in format from Hot AC all the way to Sports Talk. Narration credits include shows on DIY Network and TLC.</p>
+      <p>Joanna's home studio is located in San Diego, CA. She is able to serve clients quickly while delivering the high level of professionalism and quality you expect. Her craft has established her as one of the top female voice over artists working today.</p>
+      <p>Represented by Atlas Talent Agency in New York and Los Angeles.</p>
+      <div class="equipment">
+        <p class="equip-label">Studio Equipment</p>
+        <div class="equip-tags">
+          <span class="equip-tag">Sennheiser 416</span>
+          <span class="equip-tag">Source Connect</span>
+          <span class="equip-tag">MP3</span>
+          <span class="equip-tag">AIFF</span>
+          <span class="equip-tag">WAV</span>
+          <span class="equip-tag">Phone Patch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-band">
+  <div class="contact-inner">
+    <p class="contact-eyebrow">Get in touch</p>
+    <h2 class="contact-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h4>Atlas Talent — New York</h4>
+        <p>15 East 32nd Street, 6th Floor<br>New York, NY 10016<br><a href="tel:2127304500">212.730.4500</a><br><a href="mailto:Jonn@AtlasTalent.com">Jonn@AtlasTalent.com</a></p>
+      </div>
+      <div class="contact-block">
+        <h4>Atlas Talent — Los Angeles</h4>
+        <p>8721 Sunset Blvd<br>West Hollywood, CA 90069<br><a href="tel:3103249800">310.324.9800</a><br><a href="mailto:Heather@AtlasTalent.com">Heather@AtlasTalent.com</a></p>
+      </div>
+      <div class="contact-block">
+        <h4>Direct</h4>
+        <p>Studio / Phone patch:<br><a href="tel:6198385080">619.838.5080</a><br><a href="mailto:jstadwiser@gmail.com">jstadwiser@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Joanna Stadwiser Voice Over</p>
+  <p>© 2026</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const demoCategories = {
+    'Commercial': [{ name: 'Commercial Demo', src: 'https://joannastadwiser.com/wp-content/uploads/2019/07/Joanna-Stadwiser-vo-commercial-demo-V2.mp3' }],
+    'Promo': [{ name: 'Promo Demo', src: 'https://joannastadwiser.com/wp-content/uploads/2019/02/01-Joanna-Stadwiser-VO-Demo-TV.mp3' }],
+    'Trailer': [{ name: 'Movie Trailer Demo', src: 'https://joannastadwiser.com/wp-content/uploads/2024/07/JOANNA-STADWISER_TrailerVODemo_A.mp3' }],
+    'Affiliates': [{ name: 'TV Affiliate Demo', src: 'https://joannastadwiser.com/wp-content/uploads/2024/07/Joanna-Stadwiser-Affiliate-Demo.mp3' }],
+    'Radio Imaging': [
+      { name: 'Hot AC', src: 'https://joannastadwiser.com/wp-content/uploads/2016/05/Joanna-Stadwiser-Hot-AC-Demo-September-2015-1.mp3' },
+      { name: 'AC', src: 'https://joannastadwiser.com/wp-content/uploads/2016/05/Joanna-Stadwiser-AC-Demo-September-2015-1.mp3' },
+      { name: 'Country', src: 'https://joannastadwiser.com/wp-content/uploads/2016/05/Joanna-Stadwiser-Country-Demo-September-2015.mp3' },
+      { name: 'Rock', src: 'https://joannastadwiser.com/wp-content/uploads/2016/05/Joanna-Stadwiser-Rock-Demo-September-2015.mp3' },
+      { name: 'Sports Talk', src: 'https://joannastadwiser.com/wp-content/uploads/2016/05/Joanna-Stadwiser-Sports-Demo-September-2015.mp3' }
+    ]
+  };
+
+  const videos = {
+    'The Faithful on Fox': { type: 'local', src: 'Beckys_Story_15.mp4' },
+    'Scripps Sports Network': { type: 'local', src: 'NWSL_MLV Combo_SSN_30_V8_JOANNA.mp4' },
+    'Armorvue Windows and Doors': { type: 'youtube', src: 'd1VmPHRyGiE' },
+    'Neffy': { type: 'youtube', src: 'ZmIbWjsfQGE' },
+    'CBS Mornings': { type: 'local', src: 'Joanna Stadwiser CBS Mornings Promo.mp4' },
+    'Concert Promotion': { type: 'local', src: 'Joanna Stadwiser - Paul McCartney Concert Commercial.mp4' },
+    'It Ends With Us Trailer': { type: 'local', src: 'colleenhooversitendswithus_tvspot_startagain30intl38-intl-30_eng-ov_txtd_phen3000w038hov_prores_1080p2398.mp4' },
+  };
+
+  function playIcon() { return `<svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l10 6-10 6V1z"/></svg>`; }
+  function pauseIcon() { return `<svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="4" height="12" rx="1"/><rect x="7" y="1" width="4" height="12" rx="1"/></svg>`; }
+  function fmtTime(s) { const m=Math.floor(s/60),sec=Math.floor(s%60); return m+':'+(sec<10?'0':'')+sec; }
+
+  const fpAudio = new Audio();
+  const fpPlay = document.getElementById('fp-play');
+  const fpName = document.getElementById('fp-name');
+  const fpDur = document.getElementById('fp-duration');
+  const fpWave = document.getElementById('fp-wave');
+  const tabsEl = document.getElementById('demo-tabs');
+
+  const heights = Array.from({length: 70}, (_, i) => 6 + Math.round(Math.abs(Math.sin(i*0.42+1)*18 + Math.sin(i*0.85)*9)));
+  heights.forEach((h, i) => {
+    const b = document.createElement('div');
+    b.className = 'fp-bar ' + (i < 28 ? 'played' : 'unplayed');
+    b.style.height = h + 'px';
+    fpWave.appendChild(b);
+  });
+  const bars = Array.from(fpWave.querySelectorAll('.fp-bar'));
+
+  let isPlaying = false;
+  let animFrame = null;
+  let activeCategory = 'Commercial';
+  let activeSrc = null;
+
+  function updateBars() {
+    const pct = fpAudio.duration ? fpAudio.currentTime / fpAudio.duration : 0;
+    const active = Math.floor(pct * bars.length);
+    bars.forEach((b, i) => { b.className = 'fp-bar ' + (i < active ? 'played' : 'unplayed'); b.style.height = heights[i] + 'px'; });
+    if (isPlaying) animFrame = requestAnimationFrame(updateBars);
+  }
+
+  fpAudio.addEventListener('loadedmetadata', () => { fpDur.textContent = fmtTime(fpAudio.duration); });
+  fpAudio.addEventListener('timeupdate', () => { fpDur.textContent = fmtTime(fpAudio.currentTime); });
+  fpAudio.addEventListener('ended', () => { isPlaying=false; fpPlay.innerHTML=playIcon(); bars.forEach(b=>b.className='fp-bar unplayed'); });
+
+  fpPlay.addEventListener('click', () => {
+    if (!fpAudio.src) return;
+    if (isPlaying) { fpAudio.pause(); isPlaying=false; fpPlay.innerHTML=playIcon(); cancelAnimationFrame(animFrame); }
+    else { fpAudio.play(); isPlaying=true; fpPlay.innerHTML=pauseIcon(); updateBars(); }
+  });
+
+  fpWave.addEventListener('click', e => {
+    if (!fpAudio.duration) return;
+    const r = fpWave.getBoundingClientRect();
+    fpAudio.currentTime = ((e.clientX - r.left) / r.width) * fpAudio.duration;
+  });
+
+  function loadDemo(demo, autoplay = true) {
+    fpAudio.pause(); cancelAnimationFrame(animFrame);
+    fpAudio.src = demo.src; activeSrc = demo.src;
+    fpName.textContent = demo.name; fpDur.textContent = '0:00';
+    fpPlay.innerHTML = playIcon();
+    bars.forEach(b => { b.className='fp-bar unplayed'; b.style.height='4px'; });
+    fpAudio.load();
+    if (autoplay) fpAudio.play().then(() => { isPlaying=true; fpPlay.innerHTML=pauseIcon(); updateBars(); }).catch(()=>{});
+  }
+
+  function renderTabs() {
+    tabsEl.innerHTML = '';
+    Object.keys(demoCategories).forEach(cat => {
+      const btn = document.createElement('div');
+      btn.className = 'demo-tab' + (cat===activeCategory ? ' active' : '');
+      btn.textContent = cat;
+      btn.style.cursor = 'pointer';
+      btn.addEventListener('click', () => {
+        activeCategory = cat;
+        renderTabs();
+        loadDemo(demoCategories[cat][0]);
+      });
+      tabsEl.appendChild(btn);
+    });
+  }
+
+  renderTabs();
+  loadDemo(demoCategories['Commercial'][0], false);
+
+  // VIDEO MODAL
+  const modal = document.createElement('div');
+  modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;align-items:center;justify-content:center;';
+  modal.innerHTML = `<div style="position:relative;width:90%;max-width:900px;">
+    <button id="modal-close" style="position:absolute;top:-44px;right:0;background:transparent;border:none;color:#fff;font-size:32px;cursor:pointer;">×</button>
+    <div id="modal-video" style="width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#000;"></div>
+    <p id="modal-title" style="color:#fff;font-size:14px;margin-top:12px;font-family:Inter,sans-serif;"></p>
+  </div>`;
+  document.body.appendChild(modal);
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+  function closeModal() {
+    modal.style.display = 'none';
+    document.getElementById('modal-video').innerHTML = '';
+  }
+
+  function openModal(title, v) {
+    document.getElementById('modal-title').textContent = title;
+    const mv = document.getElementById('modal-video');
+    if (v.type === 'youtube') {
+      mv.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.src}?autoplay=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;"></iframe>`;
+    } else {
+      mv.innerHTML = `<video src="${v.src}" controls autoplay style="width:100%;height:100%;background:#000;"></video>`;
+    }
+    modal.style.display = 'flex';
+  }
+
+  document.querySelectorAll('.video-card').forEach(card => {
+    const title = card.querySelector('.video-label-title').textContent;
+    const v = videos[title];
+    if (v) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => openModal(title, v));
+    }
+  });
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+}); // end DOMContentLoaded
+</script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Local previews and packages (not part of the site)
+joanna-preview.html
+*.zip
+*.gif
+site/
+logos/source/
+logos/preview.png
+.DS_Store
