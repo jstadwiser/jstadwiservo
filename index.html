@@ -384,7 +384,7 @@
 
     <div class="video-card">
       <div class="video-thumb">
-        <img onerror="this.classList.add('img-missing')" src="faithful-thumb.jpg" alt="The Faithful on Fox" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img onerror="this.classList.add('img-missing')" src="https://dashing-cocada-48335b.netlify.app/faithful-thumb.jpg" loading="lazy" alt="The Faithful on Fox" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
       </div>
       <div class="video-label"><p class="video-label-title">The Faithful on Fox</p></div>
@@ -392,7 +392,7 @@
 
     <div class="video-card">
       <div class="video-thumb">
-        <img onerror="this.classList.add('img-missing')" src="scripps-thumb.jpg" alt="Scripps Sports Network" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img onerror="this.classList.add('img-missing')" src="https://dashing-cocada-48335b.netlify.app/scripps-thumb.jpg" loading="lazy" alt="Scripps Sports Network" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
       </div>
       <div class="video-label"><p class="video-label-title">Scripps Sports Network</p></div>
@@ -408,7 +408,7 @@
 
     <div class="video-card">
       <div class="video-thumb">
-        <img onerror="this.classList.add('img-missing')" src="https://img.youtube.com/vi/ZmIbWjsfQGE/mqdefault.jpg" alt="Neffy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img onerror="this.classList.add('img-missing')" src="https://dashing-cocada-48335b.netlify.app/neffy-thumb.jpg" loading="lazy" alt="Neffy" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
       </div>
       <div class="video-label"><p class="video-label-title">Neffy</p></div>
@@ -416,7 +416,7 @@
 
     <div class="video-card">
       <div class="video-thumb">
-        <img onerror="this.classList.add('img-missing')" src="cbs-thumb.jpg" alt="CBS Mornings" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img onerror="this.classList.add('img-missing')" src="https://dashing-cocada-48335b.netlify.app/cbs-thumb.jpg" loading="lazy" alt="CBS Mornings" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
       </div>
       <div class="video-label"><p class="video-label-title">CBS Mornings</p></div>
@@ -424,7 +424,7 @@
 
     <div class="video-card">
       <div class="video-thumb">
-        <img onerror="this.classList.add('img-missing')" src="concert-thumb.jpg" alt="Concert Promotion" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img onerror="this.classList.add('img-missing')" src="https://dashing-cocada-48335b.netlify.app/concert-thumb.jpg" loading="lazy" alt="Concert Promotion" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
       </div>
       <div class="video-label"><p class="video-label-title">Concert Promotion</p></div>
@@ -433,7 +433,7 @@
 
     <div class="video-card">
       <div class="video-thumb">
-        <img onerror="this.classList.add('img-missing')" src="itendswithus-thumb.jpg" alt="It Ends With Us Trailer" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <img onerror="this.classList.add('img-missing')" src="https://dashing-cocada-48335b.netlify.app/itendswithus-thumb.jpg" loading="lazy" alt="It Ends With Us Trailer" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="play-overlay"><div class="play-circle"><svg viewBox="0 0 12 14"><path d="M1 1l10 6-10 6V1z"/></svg></div></div>
       </div>
       <div class="video-label"><p class="video-label-title">It Ends With Us Trailer</p></div>
@@ -594,6 +594,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ]
   };
 
+  const MEDIA_BASE = 'https://dashing-cocada-48335b.netlify.app/'; // where the featured videos are hosted
   const videos = {
     'The Faithful on Fox': { type: 'local', src: 'Beckys_Story_15.mp4' },
     'Scripps Sports Network': { type: 'local', src: 'NWSL_MLV Combo_SSN_30_V8_JOANNA.mp4' },
@@ -706,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (v.type === 'youtube') {
       mv.innerHTML = `<iframe src="https://www.youtube.com/embed/${v.src}?autoplay=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;"></iframe>`;
     } else {
-      mv.innerHTML = `<video src="${v.src}" controls autoplay style="width:100%;height:100%;background:#000;"></video>`;
+      mv.innerHTML = `<video src="${encodeURI(MEDIA_BASE + v.src)}" controls autoplay playsinline style="width:100%;height:100%;background:#000;"></video>`;
     }
     modal.style.display = 'flex';
   }
