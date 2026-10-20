@@ -31,10 +31,19 @@
 
     /* NAV */
     nav { position: sticky; top: 0; z-index: 100; background: rgba(249,244,238,0.94); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 3rem; }
-    .nav-logo { display: flex; align-items: center; overflow: visible; }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text-primary); }
+    .logo-wave { width: 40px; height: 32px; fill: var(--terra); flex-shrink: 0; }
+    .logo-words { display: flex; align-items: flex-start; gap: 7px; font-family: var(--font-body); }
+    .logo-first { display: flex; flex-direction: column; gap: 4px; }
+    .logo-name { font-weight: 500; font-size: 15px; line-height: 1; letter-spacing: 0.2em; }
+    .logo-joanna { margin-right: -0.2em; }
+    .logo-vo { display: flex; justify-content: space-between; font-weight: 400; font-size: 8px; line-height: 1; color: var(--terra); }
+    .logo-vo .vo-space { width: 0.3em; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
     .nav-links a { font-size: 15px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
     .nav-links a:hover { color: var(--terra); }
+    .nav-links a.nav-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 4px; background: var(--terra); color: var(--cream); font-weight: 500; letter-spacing: 0.03em; transition: background 0.2s; }
+    .nav-links a.nav-cta:hover { background: var(--terra-dark); color: var(--cream); }
 
     /* HERO */
     .hero-wrap { background-image: url('hero.jpg'); background-size: cover; background-position: center; position: relative; }
@@ -177,26 +186,29 @@
       .contact-band { padding: 3rem 1.5rem; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-      .nav-logo svg { width: 220px; }
+      .nav-logo { gap: 10px; }
+      .logo-wave { width: 34px; height: 27px; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">
-    <svg width="340" height="44" viewBox="0 0 460 64" overflow="visible" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="46" font-family="Cormorant Garamond, serif" font-size="38" font-weight="300" fill="#2a1f18" letter-spacing="1">Joanna Stadwiser</text>
-      <circle cx="318" cy="32" r="28" fill="#b85c38"/>
-      <circle cx="318" cy="32" r="25" fill="none" stroke="#f2e0d6" stroke-width="0.8"/>
-      <text x="318" y="40" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="24" font-weight="500" fill="#f9f4ee" letter-spacing="1">VO</text>
-    </svg>
+  <a href="#" class="nav-logo" aria-label="Joanna Stadwiser, voice over — home">
+    <svg class="logo-wave" viewBox="0 0 70 56" aria-hidden="true"><g><rect x="0" y="22" width="4" height="12" rx="2"/><rect x="8" y="14" width="4" height="28" rx="2"/><rect x="16" y="19" width="4" height="18" rx="2"/><rect x="24" y="6" width="4" height="44" rx="2"/><rect x="32" y="0" width="4" height="56" rx="2"/><rect x="40" y="9" width="4" height="38" rx="2"/><rect x="48" y="16" width="4" height="24" rx="2"/><rect x="56" y="12" width="4" height="32" rx="2"/><rect x="64" y="21" width="4" height="14" rx="2"/></g></svg>
+    <span class="logo-words" aria-hidden="true">
+      <span class="logo-first">
+        <span class="logo-name logo-joanna">JOANNA</span>
+        <span class="logo-vo"><span>V</span><span>O</span><span>I</span><span>C</span><span>E</span><span class="vo-space"></span><span>O</span><span>V</span><span>E</span><span>R</span></span>
+      </span>
+      <span class="logo-name">STADWISER</span>
+    </span>
   </a>
   <ul class="nav-links">
     <li><a href="#demos">Demos</a></li>
     <li><a href="#featured">Featured Work</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
