@@ -24,6 +24,21 @@
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://joannastadwiser.com/#joanna", "name": "Joanna Stadwiser", "jobTitle": "Voice Over Artist", "description": "Voice over artist for network TV promos, movie trailers, commercials, narration and radio imaging. Credits include promos for The Today Show, NBC Nightly News, CBS Mornings and Extra.", "url": "https://joannastadwiser.com/", "image": "https://joannastadwiser.com/headshot.jpg", "email": "jstadwiser@gmail.com", "telephone": "+1-619-838-5080", "address": {"@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA", "addressCountry": "US"}, "knowsAbout": ["Voice over", "Television promos", "Movie trailers", "Commercials", "Narration", "Radio imaging"]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Joanna Stadwiser Voice Over", "url": "https://joannastadwiser.com/", "about": {"@id": "https://joannastadwiser.com/#joanna"}}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://joannastadwiser.com/"}]}</script>
+  <!-- Google Analytics (GA4): paste the Measurement ID below, e.g. 'G-ABC123XYZ'. Leave empty to disable. -->
+  <script>
+    window.GA_MEASUREMENT_ID = '';
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.trackEvent = function (name, params) { if (window.GA_MEASUREMENT_ID) gtag('event', name, params || {}); };
+    if (window.GA_MEASUREMENT_ID) {
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(ga);
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID);
+    }
+  </script>
   <link rel="icon" href="favicon.ico" sizes="32x32" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -802,6 +817,7 @@ document.addEventListener('DOMContentLoaded', function() {
       mv.innerHTML = `<video src="${encodeURI(MEDIA_BASE + v.src)}" controls autoplay playsinline style="width:100%;height:100%;background:#000;"></video>`;
     }
     lastFocus = document.activeElement;
+    trackEvent('video_play', { video_title: title });
     modal.style.display = 'flex';
     document.getElementById('modal-close').focus();
   }
@@ -855,6 +871,19 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('mini-close').addEventListener('click', () => {
     if (isPlaying) fpPlay.click();
     miniDismissed = true; syncMini();
+  });
+
+
+  // ANALYTICS EVENTS (no-ops until GA_MEASUREMENT_ID is set)
+  fpAudio.addEventListener('play', () => trackEvent('demo_play', { demo_name: fpName.textContent, demo_category: activeCategory }));
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('mailto:')) trackEvent('contact_email', { email_to: href.slice(7) });
+    else if (href.startsWith('tel:')) trackEvent('contact_phone', { phone: href.slice(4) });
+    else if (a.classList.contains('btn-ghost')) trackEvent('book_click', { location: 'hero' });
+    else if (a.classList.contains('nav-cta')) trackEvent('book_click', { location: 'nav' });
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
