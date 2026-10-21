@@ -161,6 +161,19 @@
     .mobile-menu a:hover { color: var(--terra); }
 
 
+
+    /* KEYBOARD FOCUS */
+    :focus { outline: none; }
+    :focus-visible { outline: 2px solid var(--terra); outline-offset: 3px; border-radius: 4px; }
+    .hero-wrap :focus-visible, .contact-band :focus-visible, .site-footer :focus-visible, .mini-player :focus-visible { outline-color: var(--cream); }
+    .fp-play:focus-visible, .mini-play:focus-visible, .mini-close:focus-visible { border-radius: 50%; }
+    .demo-tab { cursor: pointer; }
+    .demo-tab:focus-visible { border-radius: 20px; }
+    .fp-play { padding: 0; cursor: pointer; }
+    .video-card:focus-visible { outline-offset: 4px; border-radius: 10px; }
+    .skip-link { position: absolute; left: 16px; top: -60px; z-index: 200; background: var(--terra); color: var(--cream); padding: 10px 16px; border-radius: 4px; font-size: 14px; font-weight: 500; text-decoration: none; }
+    .skip-link:focus { top: 12px; }
+
     /* HERO COPY + BUTTONS */
     .hero-tagline { font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.88); max-width: 560px; margin-top: -0.5rem; margin-bottom: 2rem; font-weight: 300; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -268,6 +281,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#demos">Skip to demos</a>
 
 <nav>
   <a href="#" class="nav-logo" aria-label="Joanna Stadwiser, voice over — home">
@@ -287,7 +301,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu">
+  <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -373,12 +387,12 @@
       <p class="section-eyebrow">Listen</p>
       <h2 class="section-title">Demos</h2>
     </div>
-    <div class="demo-tabs" id="demo-tabs">
-      <div class="demo-tab active">Commercial</div>
-      <div class="demo-tab">Promo</div>
-      <div class="demo-tab">Trailer</div>
-      <div class="demo-tab">Affiliates</div>
-      <div class="demo-tab">Radio Imaging</div>
+    <div class="demo-tabs" id="demo-tabs" role="group" aria-label="Demo categories">
+      <button type="button" class="demo-tab active">Commercial</button>
+      <button type="button" class="demo-tab">Promo</button>
+      <button type="button" class="demo-tab">Trailer</button>
+      <button type="button" class="demo-tab">Affiliates</button>
+      <button type="button" class="demo-tab">Radio Imaging</button>
     </div>
   </div>
 
@@ -386,10 +400,10 @@
     <p class="fp-label">Now playing</p>
     <p class="fp-name" id="fp-name">Commercial Demo</p>
     <div class="fp-row">
-      <div class="fp-play" id="fp-play">
-        <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l10 6-10 6V1z"/></svg>
-      </div>
-      <div class="fp-wave" id="fp-wave"></div>
+      <button type="button" class="fp-play" id="fp-play" aria-label="Play demo">
+        <svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l10 6-10 6V1z"/></svg>
+      </button>
+      <div class="fp-wave" id="fp-wave" role="slider" tabindex="0" aria-label="Seek within demo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0:00"></div>
       <span class="fp-time" id="fp-duration">0:00</span>
     </div>
   </div>
@@ -660,6 +674,25 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   fpAudio.addEventListener('loadedmetadata', () => { fpDur.textContent = fmtTime(fpAudio.duration); });
+  // keyboard / screen reader support for the player
+  const syncPlayLabel = () => fpPlay.setAttribute('aria-label', fpAudio.paused ? 'Play demo' : 'Pause demo');
+  fpAudio.addEventListener('play', syncPlayLabel);
+  fpAudio.addEventListener('pause', syncPlayLabel);
+  fpAudio.addEventListener('ended', syncPlayLabel);
+  fpAudio.addEventListener('timeupdate', () => {
+    const pct = fpAudio.duration ? Math.round(fpAudio.currentTime / fpAudio.duration * 100) : 0;
+    fpWave.setAttribute('aria-valuenow', pct);
+    fpWave.setAttribute('aria-valuetext', fmtTime(fpAudio.currentTime || 0) + (fpAudio.duration ? ' of ' + fmtTime(fpAudio.duration) : ''));
+  });
+  fpWave.addEventListener('keydown', e => {
+    if (!fpAudio.duration) return;
+    const step = { ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5, PageUp: 15, PageDown: -15 }[e.key];
+    if (step !== undefined) fpAudio.currentTime = Math.min(Math.max(fpAudio.currentTime + step, 0), fpAudio.duration);
+    else if (e.key === 'Home') fpAudio.currentTime = 0;
+    else if (e.key === 'End') fpAudio.currentTime = Math.max(fpAudio.duration - 0.5, 0);
+    else return;
+    e.preventDefault(); updateBars();
+  });
   fpAudio.addEventListener('timeupdate', () => { fpDur.textContent = fmtTime(fpAudio.currentTime); });
   fpAudio.addEventListener('ended', () => { isPlaying=false; fpPlay.innerHTML=playIcon(); bars.forEach(b=>b.className='fp-bar unplayed'); });
 
@@ -688,13 +721,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderTabs() {
     tabsEl.innerHTML = '';
     Object.keys(demoCategories).forEach(cat => {
-      const btn = document.createElement('div');
+      const btn = document.createElement('button');
+      btn.type = 'button';
       btn.className = 'demo-tab' + (cat===activeCategory ? ' active' : '');
+      btn.setAttribute('aria-pressed', cat===activeCategory ? 'true' : 'false');
       btn.textContent = cat;
-      btn.style.cursor = 'pointer';
       btn.addEventListener('click', () => {
         activeCategory = cat;
-        renderTabs();
+        tabsEl.querySelectorAll('.demo-tab').forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
         loadDemo(demoCategories[cat][0]);
       });
       tabsEl.appendChild(btn);
@@ -707,8 +745,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // VIDEO MODAL
   const modal = document.createElement('div');
   modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;align-items:center;justify-content:center;';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-labelledby', 'modal-title');
   modal.innerHTML = `<div style="position:relative;width:90%;max-width:900px;">
-    <button id="modal-close" style="position:absolute;top:-44px;right:0;background:transparent;border:none;color:#fff;font-size:32px;cursor:pointer;">×</button>
+    <button type="button" id="modal-close" aria-label="Close video" style="position:absolute;top:-48px;right:0;width:44px;height:44px;background:transparent;border:none;color:#fff;font-size:32px;line-height:1;cursor:pointer;">×</button>
     <div id="modal-video" style="width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#000;"></div>
     <p id="modal-title" style="color:#fff;font-size:14px;margin-top:12px;font-family:Inter,sans-serif;"></p>
   </div>`;
@@ -716,11 +757,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('modal-close').addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
-  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+  let lastFocus = null;
+  const modalOpen = () => modal.style.display === 'flex';
+  document.addEventListener('keydown', e => {
+    if (!modalOpen()) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'Tab') {  // keep focus inside the video popup
+      const f = [...modal.querySelectorAll('button, iframe, video')];
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   function closeModal() {
+    if (!modalOpen()) return;
     modal.style.display = 'none';
     document.getElementById('modal-video').innerHTML = '';
+    if (lastFocus) lastFocus.focus();
   }
 
   function openModal(title, v) {
@@ -731,7 +785,9 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       mv.innerHTML = `<video src="${encodeURI(MEDIA_BASE + v.src)}" controls autoplay playsinline style="width:100%;height:100%;background:#000;"></video>`;
     }
+    lastFocus = document.activeElement;
     modal.style.display = 'flex';
+    document.getElementById('modal-close').focus();
   }
 
   document.querySelectorAll('.video-card').forEach(card => {
@@ -739,7 +795,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const v = videos[title];
     if (v) {
       card.style.cursor = 'pointer';
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', 'Play video: ' + title);
       card.addEventListener('click', () => openModal(title, v));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(title, v); }
+      });
     }
   });
 
@@ -784,15 +846,19 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
+  function setMenu(open) {
+    hamburger.classList.toggle('open', open);
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) mobileMenu.querySelector('a').focus();
+  }
+  hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
   document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    });
+    link.addEventListener('click', () => setMenu(false));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) { setMenu(false); hamburger.focus(); }
   });
 
 }); // end DOMContentLoaded
