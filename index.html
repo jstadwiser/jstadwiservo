@@ -84,6 +84,9 @@
 
     /* DEMO TABS */
     .demo-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem 2rem; margin-bottom: 2.5rem; }
+    .section-head .section-title { margin-bottom: 0; }
+    .section-head .demo-tabs { margin-bottom: 0; justify-content: flex-end; }
     .demo-tab { font-size: 15px; color: var(--text-secondary); background: transparent; border: 0.5px solid var(--border); border-radius: 20px; padding: 8px 20px; font-family: var(--font-body); cursor: default; }
     .demo-tab.active { background: var(--terra); color: var(--cream); border-color: var(--terra); }
 
@@ -243,6 +246,8 @@
       .section-divider { padding: 0 1.5rem; }
       .section-eyebrow, .contact-eyebrow { font-size: 22px; }
       .demo-tabs { gap: 5px; flex-wrap: wrap; }
+      .section-head { flex-direction: column; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem; }
+      .section-head .demo-tabs { justify-content: flex-start; }
       .demo-tab { font-size: 11px; padding: 5px 9px; }
       .featured-player { padding: 1rem; }
       .fp-name { font-size: 16px; margin-bottom: 1rem; }
@@ -363,15 +368,18 @@
 
 <!-- DEMOS -->
 <section class="section-wrap" id="demos">
-  <p class="section-eyebrow">Listen</p>
-  <h2 class="section-title">Demos</h2>
-
-  <div class="demo-tabs" id="demo-tabs">
-    <div class="demo-tab active">Commercial</div>
-    <div class="demo-tab">Promo</div>
-    <div class="demo-tab">Trailer</div>
-    <div class="demo-tab">Affiliates</div>
-    <div class="demo-tab">Radio Imaging</div>
+  <div class="section-head">
+    <div>
+      <p class="section-eyebrow">Listen</p>
+      <h2 class="section-title">Demos</h2>
+    </div>
+    <div class="demo-tabs" id="demo-tabs">
+      <div class="demo-tab active">Commercial</div>
+      <div class="demo-tab">Promo</div>
+      <div class="demo-tab">Trailer</div>
+      <div class="demo-tab">Affiliates</div>
+      <div class="demo-tab">Radio Imaging</div>
+    </div>
   </div>
 
   <div class="featured-player">
