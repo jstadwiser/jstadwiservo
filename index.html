@@ -772,7 +772,7 @@ document.addEventListener('DOMContentLoaded', function() {
           b.classList.toggle('active', on);
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
-        loadDemo(demoCategories[cat][0]);
+        loadDemo(demoCategories[cat][0], false);
       });
       tabsEl.appendChild(btn);
     });
