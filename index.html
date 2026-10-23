@@ -131,9 +131,17 @@
 
     /* FEATURED PLAYER */
     .featured-player { background: #fff; border: 0.5px solid var(--border); border-radius: 12px; padding: 1.75rem 2rem; margin-bottom: 2rem; }
-    .track-list-item { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-family: var(--font-body); font-size: 15px; color: var(--text-primary); background: transparent; border: 0.5px solid var(--border); margin-bottom: 8px; width: 100%; text-align: left; transition: background 0.15s; }
-    .track-list-item:hover { background: var(--sand); }
-    .track-list-item.active { background: var(--terra); color: var(--cream); border-color: var(--terra); }
+    .multi-player-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    .mini-player-box { background: #fff; border: 0.5px solid var(--border); border-radius: 12px; padding: 1.25rem 1.25rem 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .mini-player-box .fp-label { margin-bottom: 0; }
+    .mini-player-box .fp-name { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 0; }
+    .mini-player-box .fp-row { display: flex; align-items: center; gap: 10px; }
+    .mini-player-box .fp-play { width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--terra); background: transparent; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; }
+    .mini-player-box .fp-play svg { width: 12px; height: 12px; fill: var(--terra); margin-left: 2px; }
+    .mini-player-box .fp-wave { flex: 1; min-width: 0; height: 28px; display: flex; align-items: center; gap: 2px; cursor: pointer; }
+    .mini-player-box .fp-time { font-size: 11px; color: var(--text-muted); flex-shrink: 0; }
+    @media (max-width: 700px) { .multi-player-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .multi-player-grid { grid-template-columns: 1fr; } }
     .fp-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
     .fp-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; color: var(--text-primary); margin-bottom: 1.5rem; }
     .fp-row { display: flex; align-items: center; gap: 16px; }
@@ -453,7 +461,7 @@
       <span class="fp-time" id="fp-duration">0:00</span>
     </div>
   </div>
-  <div id="track-list" style="display:none; margin-top:1rem;"></div>
+  <div id="multi-player-grid" style="display:none;" class="multi-player-grid"></div>
 
 </section>
 
@@ -763,22 +771,102 @@ document.addEventListener('DOMContentLoaded', function() {
     if (autoplay) fpAudio.play().then(() => { isPlaying=true; fpPlay.innerHTML=pauseIcon(); updateBars(); }).catch(()=>{});
   }
 
-  const trackListEl = document.getElementById('track-list');
-  function renderTrackList(tracks) {
-    trackListEl.innerHTML = '';
-    if (tracks.length <= 1) { trackListEl.style.display = 'none'; return; }
-    trackListEl.style.display = 'block';
-    tracks.forEach((track, i) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'track-list-item' + (i === 0 ? ' active' : '');
-      btn.textContent = track.name;
-      btn.addEventListener('click', () => {
-        trackListEl.querySelectorAll('.track-list-item').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        loadDemo(track, false);
+  const multiGridEl = document.getElementById('multi-player-grid');
+  const miniAudios = [];
+  function playIcon12() { return `<svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 1l10 6-10 6V1z"/></svg>`; }
+  function pauseIcon12() { return `<svg viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 2h3v10H2zm5 0h3v10H7z"/></svg>`; }
+
+  function renderMultiPlayers(tracks) {
+    multiGridEl.innerHTML = '';
+    miniAudios.forEach(a => { a.pause(); });
+    miniAudios.length = 0;
+    if (tracks.length <= 1) { multiGridEl.style.display = 'none'; return; }
+    multiGridEl.style.display = 'grid';
+
+    tracks.forEach(track => {
+      const audio = new Audio(track.src);
+      miniAudios.push(audio);
+
+      const box = document.createElement('div');
+      box.className = 'mini-player-box';
+
+      const label = document.createElement('p');
+      label.className = 'fp-label';
+      label.textContent = 'Radio Imaging';
+
+      const name = document.createElement('p');
+      name.className = 'fp-name';
+      name.textContent = track.name;
+
+      const row = document.createElement('div');
+      row.className = 'fp-row';
+
+      const playBtn = document.createElement('button');
+      playBtn.type = 'button';
+      playBtn.className = 'fp-play';
+      playBtn.setAttribute('aria-label', 'Play ' + track.name);
+      playBtn.innerHTML = playIcon12();
+
+      // mini waveform bars
+      const wave = document.createElement('div');
+      wave.className = 'fp-wave';
+      const barCount = 30;
+      const miniBars = [];
+      for (let i = 0; i < barCount; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'fp-bar unplayed';
+        bar.style.height = (4 + Math.random() * 18) + 'px';
+        wave.appendChild(bar);
+        miniBars.push(bar);
+      }
+
+      const timeEl = document.createElement('span');
+      timeEl.className = 'fp-time';
+      timeEl.textContent = '0:00';
+
+      let isPlaying = false;
+
+      function updateMiniBars() {
+        if (!audio.duration) return;
+        const pct = audio.currentTime / audio.duration;
+        const played = Math.round(pct * barCount);
+        miniBars.forEach((b, i) => { b.className = 'fp-bar ' + (i < played ? 'played' : 'unplayed'); });
+        timeEl.textContent = fmtTime(audio.currentTime);
+        if (isPlaying) requestAnimationFrame(updateMiniBars);
+      }
+
+      playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+          audio.pause(); isPlaying = false; playBtn.innerHTML = playIcon12();
+        } else {
+          miniAudios.forEach((a, idx) => {
+            if (a !== audio) {
+              a.pause();
+              const otherBox = multiGridEl.children[idx];
+              if (otherBox) otherBox.querySelector('.fp-play').innerHTML = playIcon12();
+            }
+          });
+          audio.play(); isPlaying = true; playBtn.innerHTML = pauseIcon12();
+          updateMiniBars();
+        }
       });
-      trackListEl.appendChild(btn);
+
+      audio.addEventListener('ended', () => { isPlaying = false; playBtn.innerHTML = playIcon12(); });
+      audio.addEventListener('timeupdate', () => { timeEl.textContent = fmtTime(audio.currentTime || 0); });
+
+      wave.addEventListener('click', e => {
+        if (!audio.duration) return;
+        const r = wave.getBoundingClientRect();
+        audio.currentTime = ((e.clientX - r.left) / r.width) * audio.duration;
+      });
+
+      row.appendChild(playBtn);
+      row.appendChild(wave);
+      row.appendChild(timeEl);
+      box.appendChild(label);
+      box.appendChild(name);
+      box.appendChild(row);
+      multiGridEl.appendChild(box);
     });
   }
 
@@ -797,8 +885,17 @@ document.addEventListener('DOMContentLoaded', function() {
           b.classList.toggle('active', on);
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
-        loadDemo(demoCategories[cat][0], false);
-        renderTrackList(demoCategories[cat]);
+        const tracks = demoCategories[cat];
+        if (tracks.length > 1) {
+          document.querySelector('.featured-player').style.display = 'none';
+          renderMultiPlayers(tracks);
+        } else {
+          document.querySelector('.featured-player').style.display = '';
+          multiGridEl.style.display = 'none';
+          multiGridEl.innerHTML = '';
+          miniAudios.forEach(a => a.pause()); miniAudios.length = 0;
+          loadDemo(tracks[0], false);
+        }
       });
       tabsEl.appendChild(btn);
     });
@@ -806,7 +903,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   renderTabs();
   loadDemo(demoCategories['Commercial'][0], false);
-  renderTrackList(demoCategories['Commercial']);
+  renderMultiPlayers(demoCategories['Commercial']);
 
   // VIDEO MODAL
   const modal = document.createElement('div');
